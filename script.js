@@ -32,11 +32,9 @@ canvas.addEventListener("mouseup", (event) => {
 
 // Player
 const playerLeft = new Image();
-playerLeft.src =
-    "/2dfishgameasset--184d9b3s952p2k4g3h/spritesheets/__cartoon_fish_06_red_swim_Left.png";
+playerLeft.src = "/images/__cartoon_fish_06_red_swim_left.png";
 const playerRight = new Image();
-playerRight.src =
-    "/2dfishgameasset--184d9b3s952p2k4g3h/spritesheets/__cartoon_fish_06_red_swim_Right.png";
+playerRight.src = "/images/__cartoon_fish_06_red_swim_right.png";
 
 class Player {
     constructor() {
@@ -116,8 +114,7 @@ const player = new Player();
 
 const bubblesArray = [];
 const bubbleImage = new Image();
-bubbleImage.src =
-    "./Bubblepoppinganimation--1e5z0i9m503y6h6428/bubble_pop_one/bubble_pop_frame_01.png";
+bubbleImage.src = "/images/bubble_pop_frame_01.png";
 
 class Bubble {
     constructor() {
@@ -212,8 +209,7 @@ function handleBackground() {
 
 // enemies
 const enemyImage = new Image();
-enemyImage.src =
-    "/Fishgameasset--1d4r9i34704g836q30/spritesheets/__green_cartoon_fish_01_swim.png";
+enemyImage.src = "/images/__blue_cartoon_fish_swim.png";
 
 class Enemy {
     constructor() {
@@ -295,7 +291,6 @@ function animate() {
     ctx.fillText("Score: " + score, 10, 50);
     gameFrame++;
     if (!gameOver) requestAnimationFrame(animate);
-
 }
 animate();
 
