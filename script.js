@@ -32,9 +32,9 @@ canvas.addEventListener("mouseup", (event) => {
 
 // Player
 const playerLeft = new Image();
-playerLeft.src = "/images/__cartoon_fish_06_red_swim_left.png";
+playerLeft.src = "./images/__cartoon_fish_06_red_swim_left.png";
 const playerRight = new Image();
-playerRight.src = "/images/__cartoon_fish_06_red_swim_right.png";
+playerRight.src = "./images/__cartoon_fish_06_red_swim_right.png";
 
 class Player {
     constructor() {
@@ -114,7 +114,7 @@ const player = new Player();
 
 const bubblesArray = [];
 const bubbleImage = new Image();
-bubbleImage.src = "/images/bubble_pop_frame_01.png";
+bubbleImage.src = "./images/bubble_pop_frame_01.png";
 
 class Bubble {
     constructor() {
@@ -209,7 +209,7 @@ function handleBackground() {
 
 // enemies
 const enemyImage = new Image();
-enemyImage.src = "/images/__blue_cartoon_fish_swim.png";
+enemyImage.src = "./images/__blue_cartoon_fish_swim.png";
 
 class Enemy {
     constructor() {
