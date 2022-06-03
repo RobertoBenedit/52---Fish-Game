@@ -7,8 +7,9 @@ canvas.height = 500;
 
 let score = 0;
 let gameFrame = 0;
-ctx.font = "50px Georgia";
+ctx.font = "40px Georgia";
 let gameSpeed = 1;
+let gameOver = false;
 
 // Mouse interactivity
 let canvasPosition = canvas.getBoundingClientRect();
@@ -211,8 +212,77 @@ function handleBackground() {
 
 // enemies
 const enemyImage = new Image();
-enemyImage.src = "./images/enemy.png";
+enemyImage.src =
+    "/Fishgameasset--1d4r9i34704g836q30/spritesheets/__green_cartoon_fish_01_swim.png";
 
+class Enemy {
+    constructor() {
+        this.x = canvas.width + 200;
+        this.y = Math.random() * (canvas.height - 150) + 80;
+        this.radius = 60;
+        this.speed = Math.random() * 2 + 2;
+        this.frame = 0;
+        this.frameX = 0;
+        this.frameY = 0;
+        this.spriteWidth = 418;
+        this.spriteHeight = 397;
+    }
+    draw() {
+        // ctx.fillStyle = "red";
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        // ctx.fill();
+        ctx.drawImage(
+            enemyImage,
+            this.frameX * this.spriteWidth,
+            this.frameY * this.spriteHeight,
+            this.spriteWidth,
+            this.spriteHeight,
+            this.x - 60,
+            this.y - 70,
+            this.spriteWidth / 3,
+            this.spriteHeight / 3
+        );
+    }
+    update() {
+        this.x -= this.speed;
+        if (this.x < 0 - this.radius * 2) {
+            this.x = canvas.width + 200;
+            this.y = Math.random() * (canvas.height - 150) + 80;
+            this.speed = Math.random() * 2 + 2;
+        }
+        if (gameFrame % 5 == 0) {
+            this.frame++;
+            if (this.frame >= 12) this.frame = 0;
+            if (this.frame == 3 || this.frame == 7 || this.frame == 11)
+                this.frameX = 0;
+            else this.frameX++;
+            if (this.frame < 3) this.frameY = 0;
+            else if (this.frame < 7) this.frameY = 1;
+            else if (this.frame < 11) this.frameY = 2;
+            else this.frameY = 0;
+        }
+        // collision detection player
+        const dx = this.x - player.x;
+        const dy = this.y - player.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < this.radius + player.radius) {
+            handleGameOver();
+        }
+    }
+}
+
+const enemy1 = new Enemy();
+function handleEnemies() {
+    enemy1.draw();
+    enemy1.update();
+}
+
+function handleGameOver() {
+    gameOver = true;
+    ctx.fillStyle = "white";
+    ctx.fillText("Game Over, you reached score: " + score, 110, 250);
+}
 // Animation loop
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -220,10 +290,12 @@ function animate() {
     handleBubbles();
     player.update();
     player.draw();
+    handleEnemies();
     ctx.fillStyle = "black";
     ctx.fillText("Score: " + score, 10, 50);
     gameFrame++;
-    requestAnimationFrame(animate);
+    if (!gameOver) requestAnimationFrame(animate);
+
 }
 animate();
 
