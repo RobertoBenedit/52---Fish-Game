@@ -32,9 +32,9 @@ canvas.addEventListener("mouseup", (event) => {
 
 // Player
 const playerLeft = new Image();
-playerLeft.src = "./images/__cartoon_fish_06_red_swim_left.png";
+playerLeft.src = "./images/cartoon_fish_06_red_swim_left.png";
 const playerRight = new Image();
-playerRight.src = "./images/__cartoon_fish_06_red_swim_right.png";
+playerRight.src = "./images/cartoon_fish_06_red_swim_right.png";
 
 class Player {
     constructor() {
@@ -209,7 +209,7 @@ function handleBackground() {
 
 // enemies
 const enemyImage = new Image();
-enemyImage.src = "./images/__blue_cartoon_fish_swim.png";
+enemyImage.src = "./images/blue_cartoon_fish_swim.png";
 
 class Enemy {
     constructor() {
