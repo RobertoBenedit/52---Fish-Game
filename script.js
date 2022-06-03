@@ -114,6 +114,9 @@ const player = new Player();
 // Bubbles
 
 const bubblesArray = [];
+const bubbleImage = new Image();
+bubbleImage.src =
+    "./Bubblepoppinganimation--1e5z0i9m503y6h6428/bubble_pop_one/bubble_pop_frame_01.png";
 
 class Bubble {
     constructor() {
@@ -132,12 +135,19 @@ class Bubble {
         this.distance = Math.sqrt(dx * dx + dy * dy);
     }
     draw() {
-        ctx.fillStyle = "blue";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
-        ctx.stroke();
+        // ctx.fillStyle = "blue";
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        // ctx.fill();
+        // ctx.closePath();
+        // ctx.stroke();
+        ctx.drawImage(
+            bubbleImage,
+            this.x - 65,
+            this.y - 65,
+            this.radius * 2.6,
+            this.radius * 2.6
+        );
     }
 }
 
@@ -198,6 +208,10 @@ function handleBackground() {
     ctx.drawImage(background1, BG.x1, BG.y, canvas.width, canvas.height);
     ctx.drawImage(background1, BG.x2, BG.y, canvas.width, canvas.height);
 }
+
+// enemies
+const enemyImage = new Image();
+enemyImage.src = "./images/enemy.png";
 
 // Animation loop
 function animate() {
