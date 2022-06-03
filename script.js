@@ -150,9 +150,9 @@ class Bubble {
 }
 
 const bubblePop1 = document.createElement("audio");
-bubblePop1.src = "/sounds/water-splash-slime-sfx/bubble_01.ogg";
+bubblePop1.src = "./sounds/water-splash-slime-sfx/bubble_01.ogg";
 const bubblePop2 = document.createElement("audio");
-bubblePop2.src = "/sounds/water-splash-slime-sfx/bubble_02.ogg";
+bubblePop2.src = "./sounds/water-splash-slime-sfx/bubble_02.ogg";
 
 function handleBubbles() {
     if (gameFrame % 50 == 0) {
